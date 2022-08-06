@@ -1,5 +1,5 @@
 export default {
-    name: 'menuItem',
+    name: 'menuitem',
     title: 'Menu Item',
     type: 'document',
     fields: [
@@ -24,6 +24,6 @@ export default {
             name: 'img',
             type: 'image',
             title: 'Image of the Item',
-        }
-    ]
-}
+        },
+    ],
+};
