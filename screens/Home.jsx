@@ -11,7 +11,6 @@ import {
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
 import sanityClient from '../sanity';
-import category from '../sanitydelivery/schemas/category';
 
 const Home = () => {
 
@@ -43,7 +42,6 @@ const Home = () => {
 
   return (
     <SafeAreaView className='bg-gray-900 text-black'>
-
         {/* Header */}
         <View className='flex-row pb-3 items-center mx-4 space-x-2'>
             <Image
@@ -73,22 +71,21 @@ const Home = () => {
 
         {/* Scrollable Body */}
         <ScrollView>
-            {/* Categories */}
-            <Categories />
+            <View className='pb-20'>
+                {/* Categories */}
+                <Categories />
 
-            {/* Featured Row */}
-
-            {featured?.map(category => (
-                <FeaturedRow
-                key={category._id}
-                id={category._id}            
-                title={category.name}
-                description={category.description}
-                />
-            ))}
-
+                {/* Featured Row */}
+                {featured?.map(category => (
+                    <FeaturedRow
+                    key={category._id}
+                    id={category._id}            
+                    title={category.name}
+                    description={category.description}
+                    />
+                ))}
+            </View>
         </ScrollView>
-
     </SafeAreaView>
   )
 }
