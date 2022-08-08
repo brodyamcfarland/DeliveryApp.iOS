@@ -2,7 +2,7 @@ import { View, Text, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import CategoryCard from './CategoryCard';
 import NoImage from '../assets/PlaceholderImage.png';
-import sanityClient, { urlFor } from '../sanity';
+import sanityClient from '../sanity';
 import category from '../sanitydelivery/schemas/category';
 
 const Categories = () => {
@@ -30,7 +30,7 @@ const Categories = () => {
         {categories.map((category) => (
           <CategoryCard
             key={category._id}
-            img={urlFor(category.img).width(200).url()}
+            img={category.img}
             title={category.name}/>
         ))}
     </ScrollView>
