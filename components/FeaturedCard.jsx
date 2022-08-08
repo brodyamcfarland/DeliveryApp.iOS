@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 import { StarIcon } from 'react-native-heroicons/solid';
 import { LocationMarkerIcon } from 'react-native-heroicons/outline';
+import { urlFor } from '../sanity';
 
 const FeaturedCard = ({
     id,
@@ -18,7 +19,9 @@ const FeaturedCard = ({
   return (
     <TouchableOpacity className='bg-white mr-3 shadow'>
         <Image 
-            source={img}
+            source={{
+                uri: urlFor(img).url()
+            }}
             className='h-36 w-64 rounded-lg'
         />
         <View className='px-3 pb-4'>

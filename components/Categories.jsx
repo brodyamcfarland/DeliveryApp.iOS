@@ -1,9 +1,21 @@
 import { View, Text, ScrollView } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CategoryCard from './CategoryCard';
 import NoImage from '../assets/PlaceholderImage.png';
+import sanityClient, { urlFor } from '../sanity';
+import category from '../sanitydelivery/schemas/category';
 
 const Categories = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    sanityClient.fetch(`
+      *[_type == "category"]
+    `).then(data => {
+      setCategories(data);
+    })
+  }, [])
+
   return (
     <ScrollView className='bg-white'
                 contentContainerStyle={{
@@ -14,13 +26,13 @@ const Categories = () => {
                 showsHorizontalScrollIndicator={false}
     >
         {/* Category Card */}
-        <CategoryCard img={NoImage} title='Category1'/>
-        <CategoryCard img={NoImage} title='Category2'/>
-        <CategoryCard img={NoImage} title='Category3'/>
-        <CategoryCard img={NoImage} title='Category4'/>
-        <CategoryCard img={NoImage} title='Category5'/>
-        <CategoryCard img={NoImage} title='Category6'/>
-        <CategoryCard img={NoImage} title='Category7'/>
+
+        {categories.map((category) => (
+          <CategoryCard
+            key={category._id}
+            img={urlFor(category.img).width(200).url()}
+            title={category.name}/>
+        ))}
     </ScrollView>
   )
 }
