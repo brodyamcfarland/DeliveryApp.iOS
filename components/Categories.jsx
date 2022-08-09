@@ -17,7 +17,7 @@ const Categories = () => {
   }, [])
 
   return (
-    <ScrollView className='bg-white'
+    <ScrollView className='bg-gray-300 shadow-inner pb-1'
                 contentContainerStyle={{
                     paddingHorizontal: 15,
                     paddingTop: 10,

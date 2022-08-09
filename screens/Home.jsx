@@ -69,9 +69,9 @@ const Home = () => {
             </View>
         </View>
 
-        {/* Scrollable Body */}
+
         <ScrollView>
-            <View className='pb-20'>
+            <View className='pb-[200px]'>
                 {/* Categories */}
                 <Categories />
 

@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './screens/Home';
 import Company from './screens/Company';
 import Basket from './screens/Basket';
+import SubmittingOrder from './screens/SubmittingOrder';
+import Delivery from './screens/Delivery';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
@@ -22,6 +24,16 @@ export default function App() {
               name='Basket'
               component={Basket}
               options={{ presentation: 'modal', headerShown: false }}
+            />
+            <Stack.Screen
+              name='SubmittingOrder'
+              component={SubmittingOrder}
+              options={{ presentation: 'fullScreenModal', headerShown: false }}
+            />
+            <Stack.Screen
+              name='Delivery'
+              component={Delivery}
+              options={{ presentation: 'fullScreenModal', headerShown: false }}
             />
           </Stack.Navigator>
         </TailwindProvider>

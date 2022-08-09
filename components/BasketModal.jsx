@@ -9,6 +9,8 @@ const BasketModal = () => {
     const navigation = useNavigation();
     const basketTotal = useSelector(selectBasketTotal);
 
+    if (items.length === 0) return null;
+
   return (
     <View className='absolute bottom-10 w-full z-50'>
         <TouchableOpacity onPress={()=> navigation.navigate("Basket")} className='mx-5 p-4 bg-[#6d6afc] rounded-lg flex-row items-center space-x-1 shadow-inner'>

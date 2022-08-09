@@ -1,16 +1,19 @@
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useEffect } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { urlFor } from '../sanity';
 import { ArrowLeftIcon, ChevronRightIcon, LocationMarkerIcon, StarIcon } from 'react-native-heroicons/solid';
 import { QuestionMarkCircleIcon } from 'react-native-heroicons/outline';
 import MenuItemRow from '../components/MenuItemRow';
 import BasketModal from '../components/BasketModal';
+import { useDispatch } from 'react-redux';
+import { setCompany } from '../slices/companySlice';
 
 
 const Company = () => {
 
     const navigation = useNavigation();
+    const dispatch = useDispatch();
 
     const {params: {
         id,
@@ -24,6 +27,22 @@ const Company = () => {
         long,
         lat
         },} = useRoute();
+
+        // Captures all company info for the basket screen
+    useEffect(() => {
+        dispatch(setCompany({
+            id,
+            img,
+            title,
+            rating,
+            genre,
+            address,
+            description,
+            menuitems,
+            long,
+            lat,
+        }));
+    }, [])
     
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -66,7 +85,7 @@ const Company = () => {
             </View>
             <Text className='text-gray-600 mt-2 pb-4'>{description}</Text>
         </View>
-        <TouchableOpacity className='flex-row items-center space-x-2 p-4 border-y border-gray-500'>
+        <TouchableOpacity className='flex-row items-center space-x-2 p-4 border-y border-gray-500 bg-gray-200'>
             <QuestionMarkCircleIcon opacity={.5} size={20}/>
             <Text className='pl-2 flex-1 text-md font-bold'>
                 Have a special request?
@@ -75,8 +94,8 @@ const Company = () => {
         </TouchableOpacity>
       </View>
 
-      <View className='pb-40'>
-        <Text className='px-4 pt-6 mb-3 font-bold text-xl'> Menu </Text>
+      <View className='pb-40 bg-gray-900'>
+        <Text className='px-4 pt-6 mb-3 font-bold text-xl text-white'> Menu </Text>
         {/* MenuItems */}
 
         {menuitems.map(menuitem => (

@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import { urlFor } from '../sanity'
 import { MinusCircleIcon, PlusCircleIcon } from 'react-native-heroicons/solid';
-import { selectBasketItems, addToBasket, selectBasketItemsWithId, removeFromBasket } from '../slices/basketSlice';
+import { addToBasket, selectBasketItemsWithId, removeFromBasket } from '../slices/basketSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const MenuItemRow = ({ id, name, description, price, img }) => {
@@ -23,14 +23,14 @@ const MenuItemRow = ({ id, name, description, price, img }) => {
   return (
     <>
         <TouchableOpacity 
-            className={`bg-white border p-4 border-gray-300 ${showQuantity && "border-b-0"}`}
+            className={`bg-gray-700 border p-4 border-gray-100 ${showQuantity && "border-b-0"}`}
             onPress={()=> setShowQuantity(!showQuantity)}
         >
             <View className='flex-row'>
                 <View className='flex-1 pr-2'>
-                    <Text className='text-lg mb-1'>{name}</Text>
-                    <Text className='text-gray-500'>{description}</Text>
-                    <Text className='text-gray-700 mt-2'>$ {price}</Text>
+                    <Text className='text-lg mb-1 text-white'>{name}</Text>
+                    <Text className='text-gray-300'>{description}</Text>
+                    <Text className='text-gray-100 mt-2'>$ {price}</Text>
                 </View>
                 <View>
                     <Image
@@ -43,12 +43,12 @@ const MenuItemRow = ({ id, name, description, price, img }) => {
         </TouchableOpacity>
 
         {showQuantity && (
-            <View className='bg-white px-4'>
+            <View className='bg-gray-700 px-4 border-l border-r border-white'>
                 <View className='flex-row items-center space-x-2 pb-3'>
                     <TouchableOpacity onPress={addItemToBasket}>
                         <PlusCircleIcon size={40} color='#6d6afc'/>
                     </TouchableOpacity>
-                    <Text className='min-w-[10px]'>{items.length}</Text>
+                    <Text className='min-w-[10px] text-white'>{items.length}</Text>
                     <TouchableOpacity onPress={removeItemFromBasket}
                                       disabled={!items.length}>
                         <MinusCircleIcon size={40} color={items.length > 0 ? '#6d6afc': 'gray'}/>

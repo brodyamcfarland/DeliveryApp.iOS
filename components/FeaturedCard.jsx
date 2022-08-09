@@ -36,12 +36,12 @@ const FeaturedCard = ({
             lat
         });
     }}
-    className='bg-white mr-3 shadow'>
+    className='bg-white mr-3 shadow rounded-xl'>
         <Image 
             source={{
                 uri: urlFor(img).url()
             }}
-            className='h-36 w-64 rounded-lg'
+            className='h-36 w-64 rounded-tr-xl rounded-tl-xl'
         />
         <View className='px-3 pb-4'>
             <Text className='font-bold text-md pt-2'>{title}</Text>

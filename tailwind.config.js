@@ -8,6 +8,14 @@ module.exports = {
       "./components/**/*.{js,jsx,ts,tsx}",
     ],
     theme: {
+      color: {
+        gray_darker: '#121212',
+        gray_dark: '#181818',
+        gray_normal: '#404040',
+        gray_secondary: '',
+        gray_light: '',
+        gray_lighter: '',
+      },
       extend: {},
     },
     plugins: [],
