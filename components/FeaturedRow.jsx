@@ -26,11 +26,13 @@ const FeaturedRow = ({ id, title, description }) => {
     }, []);
     
   return (
-    <View className='bg-white'>
-        <View className='bg-gray-300'>
+    <View className='bg-gray-900'>
+        <View className='bg-gray-100 mt-3'>
             <View className='mt-4 flex-row items-center justify-between px-4'>
                 <Text className='font-bold text-md'>{title}</Text>
-                <ArrowRightIcon color='#6d6afc'/>
+                <View className='top-2'>
+                    <ArrowRightIcon color='#6d6afc'/>
+                </View>
             </View>
             <Text className='text-[11px] text-gray-500 px-4 mb-4'>{description}</Text>
         </View>
@@ -40,7 +42,7 @@ const FeaturedRow = ({ id, title, description }) => {
                 paddingHorizontal: 15
             }}
             showsHorizontalScrollIndicator={false}
-            className="pt-4 pb-4 bg-gray-900"
+            className="pt-4 pb-1 bg-gray-900"
         >
             {/* Featured Cards */}
 
