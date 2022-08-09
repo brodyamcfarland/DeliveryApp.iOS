@@ -43,7 +43,7 @@ const MenuItemRow = ({ id, name, description, price, img }) => {
         </TouchableOpacity>
 
         {showQuantity && (
-            <View className='bg-gray-700 px-4 border-l border-r border-white'>
+            <View className='bg-gray-700 px-4 border-l border-r border-b border-white'>
                 <View className='flex-row items-center space-x-2 pb-3'>
                     <TouchableOpacity onPress={addItemToBasket}>
                         <PlusCircleIcon size={40} color='#6d6afc'/>
